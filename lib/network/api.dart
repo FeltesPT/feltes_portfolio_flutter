@@ -6,7 +6,15 @@ class APIHelper {
   final String baseURL = 'https://feltes.herokuapp.com/api/';
 
   Future getMyInfo() async {
-    String url = baseURL + 'info';
+    return getDataFrom('info');
+  }
+
+  Future getPortfolio() async {
+    return getDataFrom('portfolio');
+  }
+
+  Future getDataFrom(String endpoint) async {
+    String url = baseURL + endpoint;
 
     Response response = await get(url);
 
@@ -15,7 +23,7 @@ class APIHelper {
 
       return jsonDecode(data);
     } else {
-      print("Failed to get MyInfo - Error Code: ${response.statusCode}");
+      print("Failed to get $endpoint - Error Code: ${response.statusCode}");
     }
   }
 }
