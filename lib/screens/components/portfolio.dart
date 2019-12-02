@@ -40,6 +40,36 @@ class _PortfolioState extends State<Portfolio> {
     });
   }
 
+  List<TableRow> createList() {
+    List<TableRow> list = [];
+
+    for (var project in myProjects) {
+      if (list.isNotEmpty && list.last.children.length == 1) {
+        list.last.children.add(
+          PortfolioCard(
+            title: project.title,
+            imageURL: project.imageName,
+            description: project.description,
+          ),
+        );
+      } else {
+        list.add(
+          TableRow(
+            children: <Widget>[
+              PortfolioCard(
+                title: project.title,
+                imageURL: project.imageName,
+                description: project.description,
+              ),
+            ],
+          ),
+        );
+      }
+    }
+
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (myProjects == null) {
@@ -59,25 +89,8 @@ class _PortfolioState extends State<Portfolio> {
 
     return Container(
       padding: EdgeInsets.all(16.0),
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              PortfolioCard(
-                title: myProjects[0].title,
-                imageURL: myProjects[0].imageName,
-                description: myProjects[0].description,
-              ),
-              PortfolioCard(
-                title: myProjects[1].title,
-                imageURL: myProjects[1].imageName,
-                description: myProjects[1].description,
-              ),
-            ],
-          ),
-        ],
+      child: Table(
+        children: createList(),
       ),
     );
   }
@@ -98,42 +111,43 @@ class PortfolioCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var url = 'https://feltes.herokuapp.com/Portfolio/$imageURL';
-    return Expanded(
-      child: Card(
-        color: Colors.white,
-        elevation: 6,
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
-            print('Card tapped.');
-          },
-          child: Container(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
+    return Card(
+      color: Colors.white,
+      elevation: 6,
+      child: InkWell(
+        splashColor: Colors.blue.withAlpha(30),
+        onTap: () {
+          print('Card tapped.');
+        },
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              FittedBox(
+                child: Text(
                   title,
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  maxLines: 1,
                 ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Image.network(
-                  url,
-                  width: 150,
-                  height: 100,
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Text(
-                  description,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Image.network(
+                url,
+                width: 150,
+                height: 100,
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Text(
+                description,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ],
           ),
         ),
       ),
