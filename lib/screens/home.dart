@@ -52,29 +52,17 @@ class _HomeState extends State<Home> {
         backgroundColor: Color(0xFF2c3e50),
         title: Text("Feltes"),
       ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints) {
-          return SafeArea(
-            child: SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: viewportConstraints.maxHeight,
-                  maxWidth: viewportConstraints.maxWidth,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    HomeBanner(
-                      name: myInfo['name'],
-                      title: myInfo['title'],
-                    ),
-                    Portfolio()
-                  ],
-                ),
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            HomeBanner(
+              name: myInfo['name'],
+              title: myInfo['title'],
             ),
-          );
-        },
+            Portfolio()
+          ],
+        ),
       ),
     );
   }
