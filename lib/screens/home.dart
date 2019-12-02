@@ -1,6 +1,7 @@
 import 'package:feltes_portfolio/network/api.dart';
 import 'package:feltes_portfolio/screens/components/homeBanner.dart';
 import 'package:feltes_portfolio/screens/components/portfolio.dart';
+import 'package:feltes_portfolio/screens/components/portfoliogrid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -53,24 +54,22 @@ class _HomeState extends State<Home> {
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
-          return SingleChildScrollView(
-            child: SafeArea(
-              child: SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: viewportConstraints.maxHeight,
-                    maxWidth: viewportConstraints.maxWidth,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      HomeBanner(
-                        name: myInfo['name'],
-                        title: myInfo['title'],
-                      ),
-                      Portfolio()
-                    ],
-                  ),
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight,
+                  maxWidth: viewportConstraints.maxWidth,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    HomeBanner(
+                      name: myInfo['name'],
+                      title: myInfo['title'],
+                    ),
+                    Portfolio()
+                  ],
                 ),
               ),
             ),
