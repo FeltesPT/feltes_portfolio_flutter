@@ -5,7 +5,7 @@ import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 
 class Contact extends StatelessWidget {
   _sendEmail() async {
-    const url = 'mailto:feltes.pt@gmail.com?subject=Let\'s work together!';
+    const url = 'mailto:feltes.pt@gmail.com?subject=Let\'s%20work%20together!';
 
     if (await canLaunch(url)) {
       await launch(url);

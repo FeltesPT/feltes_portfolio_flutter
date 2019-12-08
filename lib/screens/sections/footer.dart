@@ -39,7 +39,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 40),
+      padding: EdgeInsets.only(bottom: 40, top: 16),
       decoration: BoxDecoration(
         color: Color(0xFF2C3E50),
       ),
