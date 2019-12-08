@@ -1,8 +1,11 @@
-import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+// API
 import 'package:feltes_portfolio/network/api.dart';
-
+// Components
+import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
+import 'package:feltes_portfolio/screens/components/portfolio_card.dart';
+// Models
 import 'package:feltes_portfolio/models/project.dart';
 
 class Portfolio extends StatefulWidget {
@@ -100,65 +103,6 @@ class _PortfolioState extends State<Portfolio> {
             children: createList(),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class PortfolioCard extends StatelessWidget {
-  final String title;
-  final String imageURL;
-  final String description;
-
-  const PortfolioCard(
-      {Key key,
-      @required this.title,
-      @required this.imageURL,
-      @required this.description})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var url = 'https://feltes.herokuapp.com/Portfolio/$imageURL';
-    return Card(
-      color: Colors.white,
-      elevation: 6,
-      child: InkWell(
-        splashColor: Colors.blue.withAlpha(30),
-        onTap: () {
-          print('Card tapped.');
-        },
-        child: Container(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              FittedBox(
-                child: Text(
-                  title,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                  maxLines: 1,
-                ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Image.network(
-                url,
-                width: 150,
-                height: 100,
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                description,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

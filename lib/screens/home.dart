@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+// API
 import 'package:feltes_portfolio/network/api.dart';
+// Screens
 import 'package:feltes_portfolio/screens/sections/contact.dart';
+import 'package:feltes_portfolio/screens/sections/footer.dart';
 import 'package:feltes_portfolio/screens/sections/homeBanner.dart';
 import 'package:feltes_portfolio/screens/sections/portfolio.dart';
 import 'package:feltes_portfolio/screens/sections/about.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -35,7 +38,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     if (myInfo == null) {
       return Container(
-        decoration: BoxDecoration(color: Color(0xFF2c3e50)),
+        decoration: BoxDecoration(color: Color(0xFF2C3E50)),
         child: Center(child: SpinKitCubeGrid(
           itemBuilder: (BuildContext context, int index) {
             return DecoratedBox(
@@ -86,6 +89,9 @@ class _HomeState extends State<Home> {
                 about: myInfo['about'],
               ),
               Contact(),
+              Footer(
+                location: myInfo['address'],
+              ),
             ],
           ),
         )

@@ -1,6 +1,7 @@
-import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 
 class Contact extends StatelessWidget {
   _sendEmail() async {

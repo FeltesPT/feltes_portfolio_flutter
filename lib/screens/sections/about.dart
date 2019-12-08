@@ -1,5 +1,5 @@
-import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 import 'package:flutter/material.dart';
+import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 
 class About extends StatelessWidget {
   final String about;
