@@ -64,6 +64,7 @@ class _PortfolioState extends State<Portfolio> {
                 title: project.title,
                 imageURL: project.imageName,
                 description: project.description,
+                url: project.url,
               ),
             ],
           ),

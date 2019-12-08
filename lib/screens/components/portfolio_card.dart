@@ -6,17 +6,19 @@ class PortfolioCard extends StatelessWidget {
   final String title;
   final String imageURL;
   final String description;
+  final String url;
 
-  const PortfolioCard(
-      {Key key,
-      @required this.title,
-      @required this.imageURL,
-      @required this.description})
-      : super(key: key);
+  const PortfolioCard({
+    Key key,
+    @required this.title,
+    @required this.imageURL,
+    @required this.description,
+    this.url,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var url = 'https://feltes.herokuapp.com/Portfolio/$imageURL';
+    var img = 'https://feltes.herokuapp.com/Portfolio/$imageURL';
     return Card(
       color: Colors.white,
       elevation: 6,
@@ -32,6 +34,7 @@ class PortfolioCard extends StatelessWidget {
                   title: title,
                   imageURL: imageURL,
                   description: description,
+                  url: url,
                 );
               },
             ),
@@ -53,7 +56,7 @@ class PortfolioCard extends StatelessWidget {
                 height: 8.0,
               ),
               Image.network(
-                url,
+                img,
                 width: 150,
                 height: 100,
               ),
