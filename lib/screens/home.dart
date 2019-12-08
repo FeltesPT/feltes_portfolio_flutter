@@ -48,22 +48,43 @@ class _HomeState extends State<Home> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF2c3e50),
-        title: Text("Feltes"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            HomeBanner(
-              name: myInfo['name'],
-              title: myInfo['title'],
+        body: CustomScrollView(
+      slivers: <Widget>[
+        SliverAppBar(
+          elevation: 6,
+          forceElevated: true,
+          backgroundColor: Color(0xFF2c3e50),
+          title: Text(
+            'Feltes',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Poppins',
+              fontSize: 20.0,
             ),
-            Portfolio()
-          ],
+          ),
+          pinned: true,
+          expandedHeight: 190.0,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Container(
+              child: Column(
+                children: <Widget>[
+                  HomeBanner(
+                    name: myInfo['name'],
+                    title: myInfo['title'],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
-    );
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Portfolio(),
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }
