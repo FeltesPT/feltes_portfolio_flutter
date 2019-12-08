@@ -1,3 +1,4 @@
+import 'package:feltes_portfolio/screens/components/sectionTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:feltes_portfolio/network/api.dart';
@@ -89,8 +90,16 @@ class _PortfolioState extends State<Portfolio> {
 
     return Container(
       padding: EdgeInsets.all(16.0),
-      child: Table(
-        children: createList(),
+      child: Column(
+        children: <Widget>[
+          SectionTitle(
+            title: "Portfolio",
+            color: Colors.black,
+          ),
+          Table(
+            children: createList(),
+          ),
+        ],
       ),
     );
   }
