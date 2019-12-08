@@ -1,7 +1,7 @@
 import 'package:feltes_portfolio/network/api.dart';
 import 'package:feltes_portfolio/screens/components/homeBanner.dart';
 import 'package:feltes_portfolio/screens/components/portfolio.dart';
-import 'package:feltes_portfolio/screens/components/portfoliogrid.dart';
+import 'package:feltes_portfolio/screens/components/about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -81,6 +81,9 @@ class _HomeState extends State<Home> {
           delegate: SliverChildListDelegate(
             [
               Portfolio(),
+              About(
+                about: myInfo['about'],
+              ),
             ],
           ),
         )
