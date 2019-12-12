@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 // API
@@ -38,7 +39,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     if (myInfo == null) {
       return Container(
-        decoration: BoxDecoration(color: Color(0xFF2C3E50)),
+        decoration: BoxDecoration(
+          color: Color(0xFF2C3E50),
+        ),
         child: Center(child: SpinKitCubeGrid(
           itemBuilder: (BuildContext context, int index) {
             return DecoratedBox(

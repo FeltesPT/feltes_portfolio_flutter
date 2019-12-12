@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
 class APIHelper {
-  final String baseURL = 'https://feltes.herokuapp.com/api/';
+  final String baseURL = kIsWeb
+      ? 'https://cors-anywhere.herokuapp.com/https://feltes.herokuapp.com/api/'
+      : 'https://feltes.herokuapp.com/api/';
 
   Future getMyInfo() async {
     return getDataFrom('info');

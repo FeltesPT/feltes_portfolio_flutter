@@ -51,9 +51,7 @@ class _PortfolioState extends State<Portfolio> {
       if (list.isNotEmpty && list.last.children.length == 1) {
         list.last.children.add(
           PortfolioCard(
-            title: project.title,
-            imageURL: project.imageName,
-            description: project.description,
+            project: project,
           ),
         );
       } else {
@@ -61,10 +59,7 @@ class _PortfolioState extends State<Portfolio> {
           TableRow(
             children: <Widget>[
               PortfolioCard(
-                title: project.title,
-                imageURL: project.imageName,
-                description: project.description,
-                url: project.url,
+                project: project,
               ),
             ],
           ),

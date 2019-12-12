@@ -1,27 +1,22 @@
+import 'package:feltes_portfolio/models/project.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Project extends StatelessWidget {
-  const Project({
-    @required this.title,
-    @required this.imageURL,
-    @required this.description,
-    this.url,
+class ProjectScreen extends StatelessWidget {
+  const ProjectScreen({
+    @required this.project,
   });
 
-  final String title;
-  final String imageURL;
-  final String description;
-  final String url;
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
-    var img = 'https://feltes.herokuapp.com/Portfolio/$imageURL';
+    var img = 'https://feltes.herokuapp.com/Portfolio/${project.imageName}';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF2c3e50),
         title: Text(
-          title,
+          project.title,
         ),
       ),
       body: Container(
@@ -29,12 +24,15 @@ class Project extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              Image.network(img),
+              Hero(
+                tag: project.imageName,
+                child: Image.network(img),
+              ),
               SizedBox(
                 height: 18,
               ),
               Text(
-                description,
+                project.description,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
@@ -42,7 +40,7 @@ class Project extends StatelessWidget {
                 height: 18,
               ),
               Visibility(
-                visible: url != null,
+                visible: project.url != null,
                 child: FlatButton(
                   color: Color(0xFF2c3e50),
                   child: Text(
@@ -52,10 +50,10 @@ class Project extends StatelessWidget {
                     ),
                   ),
                   onPressed: () async {
-                    if (await canLaunch(url)) {
-                      await launch(url);
+                    if (await canLaunch(project.url)) {
+                      await launch(project.url);
                     } else {
-                      throw 'Could not launch $url';
+                      throw 'Could not launch ${project.url}';
                     }
                   },
                 ),
