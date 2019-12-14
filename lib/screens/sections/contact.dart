@@ -36,6 +36,7 @@ class Contact extends StatelessWidget {
                 ),
                 FlatButton(
                   onPressed: _sendEmail,
+                  padding: EdgeInsets.only(left: 2),
                   child: Text(
                     'feltes.pt@gmail.com',
                     style: TextStyle(

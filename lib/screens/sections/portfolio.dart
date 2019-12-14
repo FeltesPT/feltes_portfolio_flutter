@@ -44,11 +44,11 @@ class _PortfolioState extends State<Portfolio> {
     });
   }
 
-  List<TableRow> createList() {
-    List<TableRow> list = [];
+  List<Row> createList(int numInRow) {
+    List<Row> list = [];
 
     for (var project in myProjects) {
-      if (list.isNotEmpty && list.last.children.length == 1) {
+      if (list.isNotEmpty && list.last.children.length <= numInRow - 1) {
         list.last.children.add(
           PortfolioCard(
             project: project,
@@ -56,7 +56,8 @@ class _PortfolioState extends State<Portfolio> {
         );
       } else {
         list.add(
-          TableRow(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               PortfolioCard(
                 project: project,
@@ -72,14 +73,23 @@ class _PortfolioState extends State<Portfolio> {
 
   @override
   Widget build(BuildContext context) {
+    bool isBigScreen = MediaQuery.of(context).size.width > 1200;
+    bool isMediumScreen =
+        MediaQuery.of(context).size.width > 800 && !isBigScreen;
+
+    int numInRow = isBigScreen ? 4 : isMediumScreen ? 3 : 2;
+
     if (myProjects == null) {
       return Container(
-        decoration: BoxDecoration(color: Color(0xFF2c3e50)),
+        constraints: BoxConstraints(
+          minHeight: 400,
+        ),
+        decoration: BoxDecoration(color: Colors.white),
         child: Center(child: SpinKitCubeGrid(
           itemBuilder: (BuildContext context, int index) {
             return DecoratedBox(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFF2c3e50),
               ),
             );
           },
@@ -88,6 +98,9 @@ class _PortfolioState extends State<Portfolio> {
     }
 
     return Container(
+      constraints: BoxConstraints(
+        maxWidth: 1200,
+      ),
       padding: EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
@@ -95,8 +108,9 @@ class _PortfolioState extends State<Portfolio> {
             title: "Portfolio",
             color: Colors.black,
           ),
-          Table(
-            children: createList(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: createList(numInRow),
           ),
         ],
       ),

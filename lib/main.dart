@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:feltes_portfolio/screens/home.dart';
+import 'package:feltes_portfolio/screens/home_web.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Feltes',
-      home: Home(),
+      home: kIsWeb ? HomeWeb() : Home(),
     );
   }
 }

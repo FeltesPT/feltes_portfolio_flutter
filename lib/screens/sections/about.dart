@@ -15,17 +15,22 @@ class About extends StatelessWidget {
         horizontal: 40,
       ),
       child: Center(
-        child: Column(
-          children: <Widget>[
-            SectionTitle(
-              title: "About",
-            ),
-            Text(
-              about,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            )
-          ],
+        child: Container(
+          constraints: BoxConstraints(
+            maxWidth: 1200,
+          ),
+          child: Column(
+            children: <Widget>[
+              SectionTitle(
+                title: "About",
+              ),
+              Text(
+                about,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          ),
         ),
       ),
     );

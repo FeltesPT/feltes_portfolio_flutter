@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:feltes_portfolio/screens/project_screen.dart';
@@ -16,14 +17,13 @@ class PortfolioCard extends StatelessWidget {
     var img = 'https://feltes.herokuapp.com/Portfolio/${project.imageName}';
     return Card(
       color: Colors.white,
-      elevation: 6,
+      elevation: 2,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              fullscreenDialog: true,
               builder: (context) {
                 return ProjectScreen(
                   project: project,
